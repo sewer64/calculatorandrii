@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logarithmic Equation Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input[type="text"], input[type="number"] {
+            width: 200px;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Logarithmic Equation Calculator</h2>
+    <form action="#" method="post" id="logEqForm">
+        <label for="base">Enter base (a):</label><br>
+        <input type="number" id="base" name="base" required><br>
+        <label for="result">Enter result (b):</label><br>
+        <input type="number" id="result" name="result" required><br>
+        <label for="exponent">Enter exponent (x):</label><br>
+        <input type="number" id="exponent" name="exponent" required><br>
+        <input type="submit" value="Calculate">
+    </form>
+    <div id="output"></div>
+    <script>
+        document.getElementById('logEqForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var base = parseFloat(document.getElementById('base').value);
+            var result = parseFloat(document.getElementById('result').value);
+            var exponent = parseFloat(document.getElementById('exponent').value);
+            var outputDiv = document.getElementById('output');
+            if (base <= 0 || base === 1 || result <= 0 || exponent <= 0) {
+                outputDiv.innerHTML = "<p>Please enter valid values for base (a), result (b), and exponent (x).</p>";
+            } else {
+                var calculatedValue = Math.pow(base, exponent);
+                if (calculatedValue === result) {
+                    outputDiv.innerHTML = "<p>The solution for the equation " + base + "^x = " + result + " is x = " + exponent + ".</p>";
+                } else {
+                    outputDiv.innerHTML = "<p>No real solution found for the equation " + base + "^x = " + result + ".</p>";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
